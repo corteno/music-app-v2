@@ -1,0 +1,107 @@
+body {
+    background: linear-gradient(to bottom left, #23074d, #cc5333);
+}
+
+.login-wrapper {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    max-width: 400px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.form-title {
+    justify-content: center;
+    color: #E0E0E0;
+    font-family: OpensansLight;
+    font-size: 42px;
+
+    margin-bottom: 60px;
+}
+
+.form-input {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #BDBDBD;
+    margin-bottom: 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    color: #EEE;
+}
+
+.input-wrapper {
+    position: relative;
+}
+.input-wrapper:before{
+    position: absolute;
+    content: '';
+    height: 25px;
+    width: 25px;
+    top: 7px;
+}
+
+.login-username-wrapper:before {
+    background: url("../img/user.svg") no-repeat center center;
+    background-size: contain;
+}
+
+.login-password-wrapper:before {
+     background: url("../img/lock.svg") no-repeat center center;
+     background-size: contain;
+}
+
+.login-email-wrapper:before {
+    background: url("../img/mail.svg") no-repeat center center;
+    background-size: contain;
+}
+
+.form-submit {
+    height: 50px;
+    margin-top: 20px;
+    justify-content: center;
+    border: none;
+    color: #EEE;
+    font-family: OpensansMedium;
+    font-size: 20px;
+    cursor: pointer;
+    
+    background: linear-gradient(to left, #512DA8, #5E35B1);
+    border-radius: 40px;
+}
+
+.login-register{
+    margin-top: 20px;
+
+    color: #E0E0E0;
+    font-family: OpensansMedium;
+    text-align: center;
+    cursor: pointer;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #BDBDBD;
+    font-size: 18px;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #BDBDBD;
+    font-size: 18px;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    color: #BDBDBD;
+    font-size: 18px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #BDBDBD;
+    font-size: 18px;
+}
+
