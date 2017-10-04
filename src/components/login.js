@@ -14,7 +14,8 @@ class Login extends Component {
                 username: '',
                 password: '',
                 email: ''
-            }
+            },
+            message: ''
 
         };
     }
@@ -32,10 +33,13 @@ class Login extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        AuthService.login({
-            username: this.state.user.username,
-            password: this.state.user.password
-        });
+        AuthService.login({username: this.state.user.username,password: this.state.user.password})
+            .then(() => {
+                console.log('yep');
+            })
+            .catch(() => {
+                this.setState({message: 'Invalid credentials'});
+            })
 
     };
 
@@ -53,6 +57,9 @@ class Login extends Component {
 
             case 'email':
                 currentUserState.email = e.target.value;
+                break;
+
+            default:
                 break;
 
         }
@@ -102,6 +109,9 @@ class Login extends Component {
                         value={this.state.user.password}
                         placeholder='Password'
                     />
+                    <p className="form-message">
+                        {this.state.message}
+                    </p>
 
                     <input
                         type="submit"

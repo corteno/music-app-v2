@@ -14,9 +14,11 @@ const login = (user) => {
                 localStorage.setItem('user', createToken(userDetails));
                 refreshPage();
                 resolve("Everything worked!");
+                return true;
             })
             .catch((error) => {
                 reject("Invalid credentials");
+                return false;
             });
     })
 };

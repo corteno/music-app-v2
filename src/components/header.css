@@ -1,0 +1,22 @@
+.header-wrapper{
+    height: 60px;
+    width: 100%;
+    background: #313131;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.hamburger{
+    color: #BDBDBD;
+    font-size: 32px;
+
+    cursor: pointer;
+}
+
+
+.create-room{
+    color: #BDBDBD;
+    font-size: 48px;
+    font-family: OpensansLight;
+    margin-left: auto;
+}

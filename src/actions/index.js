@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
-import ROOT_API_URL from '../utils/AuthService';
+import ROOT_API_URL from '../utils/RootApiUrl';
 
 export const SET_USER = 'set_user';
 export const GET_USER = 'get_user';

@@ -1,0 +1,19 @@
+.room-list-item{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #616161;
+}
+
+.room-list-item p{
+    color: #BDBDBD;
+}
+
+.room-name{
+    font-family: OpensansMedium;
+    font-size: 22px;
+}
+
+.room-owner{
+    font-family: OpensansLight;
+    font-size: 14px;
+}
