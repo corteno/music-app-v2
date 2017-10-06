@@ -7,8 +7,8 @@ const FormInput = (props) => {
                 type={props.type}
                 name={props.name}
                 className={props.className + " form-input"}
-                required="required"
                 onChange={props.onInputChange}
+                required={props.required}
                 value={props.value}
                 placeholder={props.placeholder}
             />

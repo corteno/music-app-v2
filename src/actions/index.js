@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import shortid from 'shortid';
 
 import ROOT_API_URL from '../utils/RootApiUrl';
 
@@ -7,6 +8,7 @@ export const SET_USER = 'set_user';
 export const GET_USER = 'get_user';
 export const GET_ROOMS = 'get_rooms';
 export const GET_ROOM = 'get_room';
+export const CREATE_ROOM = 'create_room';
 
 export const setUser = (user) => {
     return {
@@ -41,6 +43,17 @@ export const getRoom = (id) => {
     }
 };
 
-export const createRoom = (name, password) => {
-    const request = axios.post();
+export const createRoom = (name, password, owner, isPublic) => {
+    const request = axios.post(`${ROOT_API_URL}/room`,{
+        id: shortid.generate(),
+        name,
+        password,
+        owner,
+        isPublic
+    });
+
+    return {
+        type: CREATE_ROOM,
+        payload: request
+    }
 };

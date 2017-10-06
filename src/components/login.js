@@ -89,6 +89,7 @@ class Login extends Component {
                             onInputChange={this.onInputChange}
                             value={this.state.user.email}
                             placeholder='E-mail'
+                            required={true}
                         />
                     }
 
@@ -99,6 +100,7 @@ class Login extends Component {
                         onInputChange={this.onInputChange}
                         value={this.state.user.username}
                         placeholder='Username'
+                        required={true}
                     />
 
                     <FormInput
@@ -108,6 +110,7 @@ class Login extends Component {
                         onInputChange={this.onInputChange}
                         value={this.state.user.password}
                         placeholder='Password'
+                        required={true}
                     />
                     <p className="form-message">
                         {this.state.message}

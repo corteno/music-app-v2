@@ -10,7 +10,8 @@ class Header extends Component {
 
         this.state = {
             isMenuOpen: false,
-            isCreatingRoom: true
+            isCreatingRoom: false,
+            isClosing: false
         }
     }
     
@@ -30,6 +31,14 @@ class Header extends Component {
     createRoom = () => {
         this.setState({isCreatingRoom: true});
     };
+
+    closeModal = () => {
+      this.setState({isClosing: true}, () => {
+          setTimeout(() => {
+              this.setState({isCreatingRoom: false, isClosing: false});
+          }, 300)
+      });
+    };
     
     render() {
         return (
@@ -40,7 +49,10 @@ class Header extends Component {
                     : ''
                 }
                 {this.state.isCreatingRoom
-                    ? <Modal />
+                    ? <Modal
+                        className={this.state.isClosing ? 'modal-closing' : ''}
+                        close={this.closeModal}
+                      />
                     : ''
                 }
             </header>
