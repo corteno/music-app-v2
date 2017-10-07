@@ -32,7 +32,7 @@ class RoomList extends Component {
 
     render() {
         return (
-            <ul className="room-list-wrapper">
+            <ul className="room-list-wrapper col">
                 {this.renderRooms()}
             </ul>
         );

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import './roomListItem.css';
 
 const RoomListItem = (props) => {
-
-    console.log(props.room);
     return (
         <li className="room-list-item">
             <div className="room-list-item-content col">

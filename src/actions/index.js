@@ -43,13 +43,13 @@ export const getRoom = (id) => {
     }
 };
 
-export const createRoom = (name, password, owner, isPublic) => {
+export const createRoom = (room) => {
     const request = axios.post(`${ROOT_API_URL}/room`,{
         id: shortid.generate(),
-        name,
-        password,
-        owner,
-        isPublic
+        name: room.name,
+        password: room.password,
+        owner: room.owner,
+        isPublic: room.isPublic
     });
 
     return {

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FormInput from './formInput';
 import AuthService from '../utils/AuthService';
+import {connect} from 'react-redux';
 
 import './modal.css';
 import {createRoom} from "../actions/";
@@ -42,10 +43,10 @@ class Modal extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        createRoom({
+        this.props.createRoom({
             name: this.state.roomname,
             password: this.state.password,
-            owner: AuthService.getUserDetails().name,
+            owner: AuthService.getUserDetails().username,
             isPublic: !this.state.isPrivate
         });
     };
@@ -101,4 +102,14 @@ class Modal extends Component {
     }
 }
 
-export default Modal;
+let mapDispatchToProps = (dispatch) => {
+    return ({
+        createRoom: (room) => {dispatch(createRoom(room))}
+    });
+};
+
+let mapStateToProps = (state) => {
+    return {state};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
