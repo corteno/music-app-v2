@@ -34,8 +34,8 @@ export const getRooms = () => {
     }
 };
 
-export const getRoom = (id) => {
-    const request = axios.get(`${ROOT_API_URL}/room/${id}`);
+export const getRoom = (id, password) => {
+    const request = axios.post(`${ROOT_API_URL}/room/${id}`, {password});
 
     return {
         type: GET_ROOM,

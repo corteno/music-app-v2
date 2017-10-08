@@ -10,6 +10,7 @@ import './index.css';
 import reducers from './reducers';
 import Login from './components/login';
 import Rooms from './components/rooms';
+import Room from './components/room';
 import registerServiceWorker from './registerServiceWorker';
 import AuthService from "./utils/AuthService";
 
@@ -21,6 +22,7 @@ ReactDOM.render(
             {
                 AuthService.isLoggedIn() ?
                     <Switch>
+                        <Route path='/:id' component={Room} />
                         <Route path='/' component={Rooms} />
                     </Switch>
                     :

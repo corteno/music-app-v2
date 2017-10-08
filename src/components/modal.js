@@ -49,6 +49,7 @@ class Modal extends Component {
             owner: AuthService.getUserDetails().username,
             isPublic: !this.state.isPrivate
         });
+        this.props.close();
     };
 
     render() {

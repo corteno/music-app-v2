@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getRooms} from '../actions';
 import _ from 'lodash';
+import {withRouter} from 'react-router-dom';
 
 import RoomListItem from './roomListItem';
 
@@ -18,13 +19,17 @@ class RoomList extends Component {
         this.props.getRooms();
     }
 
+    onRoomClick = (id) => {
+        this.props.history.push(`/${id}`);
+    };
+
     renderRooms = () => {
         return _.map(this.props.rooms, room => {
             return(
                 <RoomListItem
                     key={room.id}
                     room={room}
-                    onClick={this.onRoomClick}
+                    onRoomClick={this.onRoomClick}
                 />
             );
         });
@@ -43,4 +48,4 @@ let mapStateToProps = (state) => {
     return {rooms: state.rooms}
 };
 
-export default connect(mapStateToProps, {getRooms})(RoomList);
+export default connect(mapStateToProps, {getRooms})(withRouter(RoomList));

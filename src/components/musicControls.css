@@ -1,0 +1,23 @@
+.music-controls-wrapper{
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background: #212121;
+
+    transition: 0.2s all;
+    justify-content: center;
+}
+
+.primary-control{
+    width: 40px;
+    margin: 0 20px;
+}
+
+.secondary-control{
+    width: 20px;
+}
+
+.like-button{
+    margin: 0 2px;
+}
