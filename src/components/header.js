@@ -16,7 +16,6 @@ class Header extends Component {
     }
     
     componentDidMount(){
-
     }
 
     toggleMenu = () => {
@@ -55,6 +54,8 @@ class Header extends Component {
                       />
                     : ''
                 }
+
+                {this.props.children /* To render children written between the <Header></Header> tags*/}
             </header>
         );
     }

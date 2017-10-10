@@ -1,0 +1,35 @@
+.search-list-item{
+    min-height: 60px;
+    padding: 0 10px;
+    margin: 5px 0;
+    align-items: center;
+}
+
+.search-list-item-img{
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+}
+
+.search-list-content-wrapper{
+    width: 100%;
+    margin-left: 10px;
+}
+
+.search-list-content-name{
+    color: #BDBDBD;
+    font-size: 14px;
+}
+
+.search-list-content-duration{
+    color: #BDBDBD;
+    font-size: 12px;
+}
+
+.search-list-add{
+    color: #BDBDBD;
+    font-family: OpensansLight;
+    align-items: center;
+    font-size: 38px;
+    margin-left: auto;
+}

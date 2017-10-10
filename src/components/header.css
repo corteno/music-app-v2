@@ -1,5 +1,6 @@
 .header-wrapper{
     height: 60px;
+    min-height: 60px;
     width: 100%;
     background: #212121;
     align-items: center;
@@ -9,6 +10,8 @@
 .hamburger{
     color: #BDBDBD;
     font-size: 32px;
+    height: 100%;
+    align-items: center;
 
     cursor: pointer;
 }
