@@ -56,6 +56,21 @@ p {
     height: 100vh;
 }
 
+
+::-webkit-scrollbar {
+    appearance: none;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+    background: #212121;
+    border-radius: 10px;
+}
+
+
 @font-face {
     font-family: OpensansRegular;
     src: url('./fonts/OpenSans-Regular.ttf');

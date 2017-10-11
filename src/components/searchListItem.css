@@ -19,6 +19,7 @@
 .search-list-content-name{
     color: #BDBDBD;
     font-size: 14px;
+    overflow: hidden;
 }
 
 .search-list-content-duration{

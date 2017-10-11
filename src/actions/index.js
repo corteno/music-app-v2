@@ -12,6 +12,8 @@ export const GET_ROOMS = 'get_rooms';
 export const GET_ROOM = 'get_room';
 export const CREATE_ROOM = 'create_room';
 export const SEARCH = 'search';
+export const ADD_SONG = 'add_song';
+export const GET_PLAYLIST = 'get_playlist';
 
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const YT_API_URL_VIDEOS = 'https://www.googleapis.com/youtube/v3/videos';
@@ -124,3 +126,14 @@ export const search = (params) => {
         payload: request
     }
 };
+
+export const addSong = (song, roomId) => {
+    const request = axios.post(`${ROOT_API_URL}/song/${roomId}`, song);
+
+    return {
+        type: ADD_SONG,
+        payload: request
+    }
+};
+
+export const getPlaylist = ('')

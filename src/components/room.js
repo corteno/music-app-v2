@@ -23,7 +23,7 @@ class Room extends Component {
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.getRoom(this.props.match.params.id, '');
     }
 

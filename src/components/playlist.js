@@ -6,19 +6,28 @@ import PlaylistItem from './playlistItem';
 class Playlist extends Component {
 
     renderPlaylist = () => {
-        console.log('room', this.props.playlist);
+        if (this.props.playlist) {
+            return this.props.playlist.map((song) => {
+                return (
+                    <PlaylistItem
+                        key={`${song.id}-pl`}
+                        song={song}
+                    />
+                );
+            })
+        }
     };
 
     render() {
         return (
-            <ul className="playlist-wrapper">
+            <ul className="playlist-wrapper col">
                 {this.renderPlaylist()}
             </ul>
         );
     }
 }
 
-let mapStateToProps = (state) =>{
+let mapStateToProps = (state) => {
     return ({
         playlist: state.room.playlist
     })

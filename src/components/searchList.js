@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import {addSong} from "../actions/";
 
 
 import SearchListItem from './searchListItem';
@@ -13,11 +13,10 @@ class SearchList extends Component {
             return this.props.search.map((search) => {
                 return (
                     <SearchListItem
-                        id={search.id}
                         key={search.id}
-                        title={search.title}
-                        thumbnail={search.thumbnail}
-                        duration={search.duration}
+                        song={search}
+                        roomId={this.props.roomId}
+                        addSong={this.props.addSong}
                     />
                 );
             });
@@ -36,8 +35,9 @@ class SearchList extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        search: state.search
+        search: state.search,
+        roomId: state.room.id
     })
 };
 
-export default connect(mapStateToProps)(SearchList);
+export default connect(mapStateToProps, {addSong})(SearchList);
