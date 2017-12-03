@@ -49,7 +49,9 @@ class Room extends Component {
                     : <Playlist/>
                 }
 
-                <MusicControls/>
+                <MusicControls
+                    playlist={this.props.room.playlist}
+                />
             </div>
         );
     }

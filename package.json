@@ -13,6 +13,7 @@
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
+    "redux-promise-middleware": "^5.0.0",
     "shortid": "^2.2.8",
     "youtube-duration-format": "^0.2.0"
   },

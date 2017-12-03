@@ -28,3 +28,9 @@
     font-size: 12px;
 }
 
+.playlist-item-delete{
+    height: 100%;
+    padding: 0 5px;
+    cursor: pointer;
+}
+

@@ -2,3 +2,10 @@
     overflow-y: scroll;
     height: calc(100% - 60px);
 }
+
+.search-list-placeholder{
+    text-align: center;
+    font-size: 24px;
+    color: #BDBDBD;
+    margin-top: 50px;
+}

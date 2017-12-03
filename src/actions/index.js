@@ -14,6 +14,7 @@ export const CREATE_ROOM = 'create_room';
 export const SEARCH = 'search';
 export const ADD_SONG = 'add_song';
 export const GET_PLAYLIST = 'get_playlist';
+export const DELETE_SONG = 'delete_song';
 
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const YT_API_URL_VIDEOS = 'https://www.googleapis.com/youtube/v3/videos';
@@ -136,4 +137,18 @@ export const addSong = (song, roomId) => {
     }
 };
 
-export const getPlaylist = ('')
+export const getPlaylist = (room) => {
+    return {
+        type: GET_PLAYLIST,
+        payload: room.playlist
+    }
+};
+
+export const deleteSong = (roomId, songId) => {
+    const request = axios.delete(`${ROOT_API_URL}/song/${roomId}/${songId}`);
+
+    return {
+        type: DELETE_SONG,
+        payload: request
+    }
+};

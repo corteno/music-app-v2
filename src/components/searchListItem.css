@@ -20,6 +20,7 @@
     color: #BDBDBD;
     font-size: 14px;
     overflow: hidden;
+    color: #EEEEEE;
 }
 
 .search-list-content-duration{
@@ -34,3 +35,5 @@
     font-size: 38px;
     margin-left: auto;
 }
+
+

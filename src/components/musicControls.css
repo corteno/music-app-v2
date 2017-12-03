@@ -1,12 +1,17 @@
 .music-controls-wrapper{
     position: fixed;
     bottom: 0;
-    height: 60px;
+    height: 90px;
     width: 100%;
     background: #212121;
 
     transition: 0.2s all;
-    justify-content: center;
+    align-items: center;
+}
+
+.music-controls{
+    height: 100%;
+    margin-bottom: 5px;
 }
 
 .primary-control{
@@ -20,4 +25,42 @@
 
 .like-button{
     margin: 0 2px;
+}
+
+.current-music-details-wrapper{
+
+    height: 100%;
+}
+
+.current-music-text{
+    font-size: 10px;
+    text-align: center;
+    color: #BDBDBD;
+}
+
+.current-music-details{
+    font-size: 14px;
+    text-align: center;
+    color: #EEE;
+}
+
+.music-seeker-wrapper{
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.music-seeker{
+    width: 100%;
+    min-height: 3px;
+    background: #757575;
+}
+
+.music-seeker-time-wrapper{
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.music-duration-text{
+    color: #BDBDBD;
+    font-size: 12px;
 }

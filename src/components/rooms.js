@@ -6,11 +6,6 @@ import RoomList from './roomList';
 import './rooms.css';
 
 class Rooms extends Component {
-    constructor(props){
-        super(props);
-
-
-    }
     
     render() {
         return (

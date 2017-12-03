@@ -20,6 +20,12 @@ class SearchList extends Component {
                     />
                 );
             });
+        } else {
+            return (
+                <p className="search-list-placeholder">
+                    Search for music
+                </p>
+            );
         }
 
     };
