@@ -7,6 +7,7 @@ import MusicControls from './musicControls';
 import Playlist from './playlist';
 import Search from './search';
 import SearchList from './searchList';
+import YoutubePlayer from './youtubePlayer';
 
 
 import {getRoom} from '../actions/';
@@ -14,11 +15,12 @@ import './room.css';
 
 
 class Room extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-            isSearchOpen: false
+            isSearchOpen: false,
+            currentTime: '0:00'
         }
 
     }
@@ -34,7 +36,11 @@ class Room extends Component {
     onSearchClick = () => {
         this.setState({isSearchOpen: true});
     };
-    
+
+    setCurrentTime = (time) => {
+        this.setState({currentTime: time});
+    };
+
     render() {
         return (
             <div className='room-wrapper col'>
@@ -46,11 +52,17 @@ class Room extends Component {
                 </Header>
                 {this.state.isSearchOpen
                     ? <SearchList/>
-                    : <Playlist/>
+                    : ''
+
                 }
+                <div className="player-content-wrapper col">
+                    <YoutubePlayer/>
+                    <Playlist/>
+                </div>
 
                 <MusicControls
                     playlist={this.props.room.playlist}
+                    currentTime={this.state.currentTime}
                 />
             </div>
         );

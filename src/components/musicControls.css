@@ -4,6 +4,7 @@
     height: 90px;
     width: 100%;
     background: #212121;
+    z-index: 20;
 
     transition: 0.2s all;
     align-items: center;
@@ -28,7 +29,7 @@
 }
 
 .current-music-details-wrapper{
-
+    width: 100%;
     height: 100%;
 }
 
@@ -39,9 +40,17 @@
 }
 
 .current-music-details{
+    width: 100%;
+
     font-size: 14px;
     text-align: center;
+    padding: 0 5px;
     color: #EEE;
+
+    /*This is how ellipsis works*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .music-seeker-wrapper{
@@ -55,6 +64,11 @@
     background: #757575;
 }
 
+.music-seek-bar{
+    width: 100%;
+    margin: 0;
+}
+
 .music-seeker-time-wrapper{
     justify-content: space-between;
     padding: 0 5px;
@@ -63,4 +77,45 @@
 .music-duration-text{
     color: #BDBDBD;
     font-size: 12px;
+}
+
+.music-seeker{
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.music-seek-bar{
+    -webkit-appearance: none;
+    height: 3px;
+    /*margin: 10px 0;*/
+    width: 100%;
+    background: #BDBDBD;
+
+    transform-origin: 0% 50%;
+
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.music-seek-bar::-webkit-slider-thumb{
+    /*display: none;*/
+    -webkit-appearance: none;
+    height: 100%;
+    width: 0px;
+    background: none;
+}
+
+.progress-bar{
+    position: absolute;
+    pointer-events: none;
+    height: 3px;
+    width: 0px;
+    background: #512DA8;
+
+}
+
+.player-control-min-max{
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
 }

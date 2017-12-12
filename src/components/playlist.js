@@ -8,6 +8,16 @@ import PlaylistItem from './playlistItem'
 import "./playlist.css";
 
 class Playlist extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            minDistance: 100,
+            startTouchPos: 0
+
+        }
+    }
+
     componentWillMount(){
         if(!_.isEmpty(this.props.room)){
             this.props.getPlaylist(this.props.room);
@@ -25,14 +35,31 @@ class Playlist extends Component {
                         key={shortid.generate()}
                         song={song}
                         deletePlaylistItem={this.deletePlaylistItem}
+                        onTouchStart={this.onTouchStart}
+                        onTouchMove={this.onTouchMove}
+                        onTouchEnd={this.onTouchEnd}
                     />
                 );
             })
         }
     };
 
+    onTouchStart = (event) => {
+
+        this.setState({startTouchPos: event.touches[0].clientX});
+    };
+
+    onTouchMove = (event) =>{
+        console.log(event.touches[0].clientX);
+    };
+
+    onTouchEnd = (event) => {
+        console.log(this.state.startTouchPos, event.touches);
+    };
+
     
     deletePlaylistItem = (id) => {
+        console.log('end');
         this.props.deleteSong(this.props.room.id, id);
     };
 

@@ -1,4 +1,4 @@
 .playlist-wrapper{
     overflow-x: scroll;
-    margin-bottom: 80px;
+    z-index: 7;
 }

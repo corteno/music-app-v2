@@ -1,0 +1,15 @@
+.youtube-player-wrapper, .youtube-player-wrapper *{
+    max-height: 200px;
+    min-height: 200px;
+    width: 100%;
+    transition: 0.2s all ease-in-out;
+}
+
+.player-hidden{
+    /*border-bottom: 2px solid #BDBDBD;*/
+}
+
+.player-hidden, .player-hidden *{
+    height: 0px;
+    min-height: 0px;
+}

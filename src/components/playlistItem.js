@@ -5,8 +5,14 @@ import DeleteSvg from '../img/trash-2.svg';
 
 const PlaylistItem = (props) => {
 
+    //make the ontouch functions here and convert this into a component
+
     return (
-        <li className="playlist-item">
+        <li className="playlist-item"
+            onTouchStart={(e) => console.log('start')}
+            onTouchMove={(e) => console.log('move')}
+            onTouchEnd={(e) => console.log('end')}
+        >
             <div className="playlist-img-wrapper">
                 <img src={props.song.thumbnail} alt="" className="search-list-item-img"/>
             </div>

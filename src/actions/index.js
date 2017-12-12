@@ -15,6 +15,12 @@ export const SEARCH = 'search';
 export const ADD_SONG = 'add_song';
 export const GET_PLAYLIST = 'get_playlist';
 export const DELETE_SONG = 'delete_song';
+export const SET_CURRENT_SONG = 'set_current_song';
+export const SET_PLAYER = 'set_player';
+export const SET_CURRENT_TIME = 'set_current_time';
+export const TOGGLE_PLAY = 'toggle_play';
+export const TOGGLE_PLAYER_WINDOW = 'toggle_player_window';
+export const SET_ISPLAYING = 'is_playing';
 
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const YT_API_URL_VIDEOS = 'https://www.googleapis.com/youtube/v3/videos';
@@ -105,6 +111,7 @@ export const search = (params) => {
                         //Sometimes there is not contentDetails, no clue why
                         if (typeof response.data.items[i] !== 'undefined') {
                             videosArray[i].duration = YTFormat(response.data.items[i].contentDetails.duration);
+                            videosArray[i].rawDuration = response.data.items[i].contentDetails.duration;
                         } else {
                             videosArray[i].duration = null;
                         }
@@ -150,5 +157,47 @@ export const deleteSong = (roomId, songId) => {
     return {
         type: DELETE_SONG,
         payload: request
+    }
+};
+
+export const setCurrentSong = (song) => {
+    return {
+        type: SET_CURRENT_SONG,
+        payload: song
+    }
+};
+
+export const setPlayer = (player) => {
+    return {
+        type: SET_PLAYER,
+        payload: player
+    }
+};
+
+export const setCurrentTime = (time) => {
+    return {
+        type: SET_CURRENT_TIME,
+        payload: time
+    }
+};
+
+export const togglePlay = (isPlaying) => {
+    return {
+        type: TOGGLE_PLAY,
+        payload: isPlaying
+    }
+};
+
+export const togglePlayerWindow = (state) => {
+    return {
+        type: TOGGLE_PLAYER_WINDOW,
+        payload: state
+    }
+};
+
+export const setIsPlaying = (isPlaying) => {
+    return {
+        type: SET_ISPLAYING,
+        payload: isPlaying
     }
 };

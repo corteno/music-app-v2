@@ -60,7 +60,7 @@ class Search extends Component {
                     value={this.state.searchTerm}
                     onClick={this.onSearchClick}
                 />
-                <img className='search-icon' src={SearchIcon} alt="" onClick={this.toggleSearch}/>
+                <img className='search-icon' src={SearchIcon} alt="" onClick={/*this.props.isSearchOpen ? */this.toggleSearch}/>
             </div>
         );
     }
