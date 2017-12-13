@@ -35,26 +35,13 @@ class Playlist extends Component {
                         key={shortid.generate()}
                         song={song}
                         deletePlaylistItem={this.deletePlaylistItem}
-                        onTouchStart={this.onTouchStart}
-                        onTouchMove={this.onTouchMove}
-                        onTouchEnd={this.onTouchEnd}
+                        testStart={this.onTouchStart}
+                        testMove={this.onTouchMove}
+                        testEnd={this.onTouchEnd}
                     />
                 );
             })
         }
-    };
-
-    onTouchStart = (event) => {
-
-        this.setState({startTouchPos: event.touches[0].clientX});
-    };
-
-    onTouchMove = (event) =>{
-        console.log(event.touches[0].clientX);
-    };
-
-    onTouchEnd = (event) => {
-        console.log(this.state.startTouchPos, event.touches);
     };
 
     

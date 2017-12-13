@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
 
 import Modal from './modal';
+import Menu from './menu';
 import './header.css';
 
 class Header extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -14,13 +16,13 @@ class Header extends Component {
             isClosing: false
         }
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
     }
 
     toggleMenu = () => {
         console.log('toggle');
-        if(this.state.isMenuOpen){
+        if (this.state.isMenuOpen) {
             this.setState({isMenuOpen: false})
         } else {
             this.setState({isMenuOpen: true})
@@ -32,13 +34,13 @@ class Header extends Component {
     };
 
     closeModal = () => {
-      this.setState({isClosing: true}, () => {
-          setTimeout(() => {
-              this.setState({isCreatingRoom: false, isClosing: false});
-          }, 300)
-      });
+        this.setState({isClosing: true}, () => {
+            setTimeout(() => {
+                this.setState({isCreatingRoom: false, isClosing: false});
+            }, 300)
+        });
     };
-    
+
     render() {
         return (
             <header className='header-wrapper'>
@@ -51,7 +53,21 @@ class Header extends Component {
                     ? <Modal
                         className={this.state.isClosing ? 'modal-closing' : ''}
                         close={this.closeModal}
-                      />
+                    />
+                    : ''
+                }
+
+                {this.state.isMenuOpen
+                    ? <Menu toggleMenu={this.toggleMenu}>
+                        <div className="menu-header col">
+                            <h2 className="menu-room-name">{this.props.room.name}</h2>
+                            <h3 className="menu-room-owner">{this.props.room.owner}</h3>
+                        </div>
+
+                        <ul className="menu-list col">
+                            <li className="menu-list-item"><a href="" className="menu-list-item-link">Rooms</a></li>
+                        </ul>
+                    </Menu>
                     : ''
                 }
 
@@ -61,4 +77,10 @@ class Header extends Component {
     }
 }
 
-export default withRouter(Header);
+const mapStateToProps = (state) => {
+  return({
+      room: state.room
+  })
+};
+
+export default connect(mapStateToProps)(withRouter(Header));
