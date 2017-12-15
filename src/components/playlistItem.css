@@ -1,4 +1,4 @@
-.playlist-item{
+.playlist-item {
     min-height: 50px;
     padding: 0 10px;
     margin: 5px 0;
@@ -6,30 +6,37 @@
     pointer-events: all;
 }
 
-.playlist-item-img{
+.playlist-img-wrapper {
     width: 45px;
+    min-width: 45px;
     height: 45px;
+    overflow: hidden;
     border-radius: 30px;
 }
 
-.playlist-content-wrapper{
+.playlist-item-img {
+    width: 100%;
+    height: 100;
+}
+
+.playlist-content-wrapper {
     width: 100%;
     margin-left: 10px;
 }
 
-.playlist-content-name{
+.playlist-content-name {
     color: #EEEEEE;
     font-family: OpensansMedium;
     font-size: 14px;
     overflow: hidden;
 }
 
-.playlist-content-duration{
+.playlist-content-duration {
     color: #BDBDBD;
     font-size: 12px;
 }
 
-.playlist-item-delete{
+.playlist-item-delete {
     height: 100%;
     padding: 0 5px;
     cursor: pointer;

@@ -36,7 +36,7 @@ class PlaylistItem extends Component {
                 onTouchEnd={(e) => this.onTouchEnd(e)}
             >
                 <div className="playlist-img-wrapper">
-                    <img src={this.props.song.thumbnail} alt="" className="search-list-item-img"/>
+                    <img src={this.props.song.thumbnail} alt="" className="playlist-item-img"/>
                 </div>
                 <div className="playlist-content-wrapper col">
                     <p className="playlist-content-name">{this.props.song.title}</p>

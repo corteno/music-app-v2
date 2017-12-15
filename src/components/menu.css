@@ -19,13 +19,26 @@
     -o-animation-name: MenuOpen;
     animation-name: MenuOpen;
 
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
 }
 
 @keyframes MenuOpen {
     from {margin-left: -60%}
     to {margin-left: 0}
 }
+
+.menu-closing .menu-content-wrapper{
+    animation-name: MenuClose;
+    animation-duration: 0.3s;
+}
+
+@keyframes MenuClose {
+    from {margin-left: 0}
+    to {margin-left: -60%}
+}
+
+
+
 
 .menu-header{
     max-height: 60px;
@@ -82,10 +95,20 @@
     -o-animation-name: MenuBackgroundOpen;
     animation-name: MenuBackgroundOpen;
 
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
+}
+
+.menu-closing .menu-background{
+    animation-name: MenuBackgroundClose;
+    animation-duration: 0.3s;
 }
 
 @keyframes MenuBackgroundOpen {
     from {opacity: 0}
     to {opacity: 0.5}
+}
+
+@keyframes MenuBackgroundClose {
+    from {opacity: 0.5}
+    to {opacity: 0}
 }

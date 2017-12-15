@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import Modal from './modal';
 import Menu from './menu';
@@ -13,7 +14,8 @@ class Header extends Component {
         this.state = {
             isMenuOpen: false,
             isCreatingRoom: false,
-            isClosing: false
+            isClosing: false,
+            isMenuClosing: false
         }
     }
 
@@ -41,6 +43,14 @@ class Header extends Component {
         });
     };
 
+    closeMenu = () => {
+        this.setState({isMenuClosing: true}, () => {
+            setTimeout(() => {
+                this.setState({isMenuClosing: false, isMenuOpen: false});
+            }, 280)
+        });
+    };
+
     render() {
         return (
             <header className='header-wrapper'>
@@ -58,14 +68,18 @@ class Header extends Component {
                 }
 
                 {this.state.isMenuOpen
-                    ? <Menu toggleMenu={this.toggleMenu}>
+                    ? <Menu
+                        toggleMenu={this.toggleMenu}
+                        closeMenu={this.closeMenu}
+                        className={this.state.isMenuClosing ? 'menu-closing' : ''}
+                    >
                         <div className="menu-header col">
                             <h2 className="menu-room-name">{this.props.room.name}</h2>
                             <h3 className="menu-room-owner">{this.props.room.owner}</h3>
                         </div>
 
                         <ul className="menu-list col">
-                            <li className="menu-list-item"><a href="" className="menu-list-item-link">Rooms</a></li>
+                            <li className="menu-list-item"><Link to="/" className="menu-list-item-link">Rooms</Link></li>
                         </ul>
                     </Menu>
                     : ''

@@ -9,11 +9,11 @@ class Menu extends Component {
     
     render() {
         return (
-            <div className="menu-wrapper">
+            <div className={"menu-wrapper " + this.props.className}>
                 <div className="menu-content-wrapper col">
                     {this.props.children}
                 </div>
-                <div className="menu-background" onClick={() => this.props.toggleMenu()}> </div>
+                <div className="menu-background" onClick={() => this.props.closeMenu()}> </div>
             </div>
         );
     }
