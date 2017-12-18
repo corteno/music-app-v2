@@ -79,7 +79,10 @@ class Header extends Component {
                         </div>
 
                         <ul className="menu-list col">
-                            <li className="menu-list-item"><Link to="/" className="menu-list-item-link">Rooms</Link></li>
+                            <li className="menu-list-item"><Link
+                                to="/"
+                                className="menu-list-item-link"
+                            >Rooms</Link></li>
                         </ul>
                     </Menu>
                     : ''

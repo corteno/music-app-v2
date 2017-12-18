@@ -11,7 +11,7 @@ export default (state = {}, action) => {
         case ADD_SONG:
             return {
                 ...state,
-                playlist: action.payload.data
+                playlist: action.payload.data.playlist
             };
 
         case DELETE_SONG:

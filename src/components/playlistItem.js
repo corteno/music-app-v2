@@ -4,7 +4,7 @@ import './playlistItem.css'
 import DeleteSvg from '../img/trash-2.svg';
 
 class PlaylistItem extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -16,16 +16,16 @@ class PlaylistItem extends Component {
     //make the ontouch functions here and convert this into a component
 
     onTouchStart = (event) => {
-        console.log('start', event.touches[0].clientX);
+        //console.log('start', event.touches[0].clientX);
         this.setState({startTouchPos: event.touches[0].clientX});
     };
 
-    onTouchMove = (event) =>{
-        console.log(event.touches[0].clientX);
+    onTouchMove = (event) => {
+        //console.log(event.touches[0].clientX);
     };
 
     onTouchEnd = (event) => {
-        console.log(this.state.startTouchPos, event);
+        //console.log(this.state.startTouchPos, event);
     };
 
     render() {
@@ -42,7 +42,8 @@ class PlaylistItem extends Component {
                     <p className="playlist-content-name">{this.props.song.title}</p>
                     <p className="playlist-content-duration">{this.props.song.duration}</p>
                 </div>
-                <div className="playlist-item-delete" onClick={() => this.props.deletePlaylistItem(this.props.song._id)}>
+                <div className="playlist-item-delete"
+                     onClick={() => this.props.deletePlaylistItem(this.props.song._id)}>
                     <img src={DeleteSvg} alt=""/>
                 </div>
             </li>

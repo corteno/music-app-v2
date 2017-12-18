@@ -5,6 +5,7 @@ import RoomsReducer from './reducer_rooms';
 import RoomReducer from './reducer_room';
 import SearchReducer from './reducer_search';
 import PlayerReducer from './reducer_player';
+import SocketReducer from './reducer_socket';
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     rooms: RoomsReducer,
     room: RoomReducer,
     search: SearchReducer,
-    player: PlayerReducer
+    player: PlayerReducer,
+    socket: SocketReducer
 });
 
 export default rootReducer;

@@ -39,7 +39,6 @@ export default (state = initialState, action) => {
             };
 
         case DELETE_SONG:
-            console.log(action.payload);
             if(action.payload.data){
                 if(!action.payload.data.includes(state.currentSong)){
                     return {
@@ -52,10 +51,10 @@ export default (state = initialState, action) => {
             return state;
 
         case ADD_SONG:
-            if(action.payload.data.length === 1){
+            if(action.payload.data.playlist.length === 1){
                 return {
                     ...state,
-                    currentSong: action.payload.data[0]
+                    currentSong: action.payload.data.playlist[0]
                 }
             }
             return state;

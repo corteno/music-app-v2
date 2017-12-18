@@ -8,9 +8,9 @@ import Playlist from './playlist';
 import Search from './search';
 import SearchList from './searchList';
 import YoutubePlayer from './youtubePlayer';
+import AuthService from '../utils/AuthService';
 
-
-import {getRoom} from '../actions/';
+import {getRoom, getPlaylist} from '../actions';
 import './room.css';
 
 
@@ -25,9 +25,36 @@ class Room extends Component {
 
     }
 
+    componentWillMount() {
+        //this.setState({socket: this.props.socket})
+    }
+
     componentDidMount() {
         this.props.getRoom(this.props.match.params.id, '');
+
+        this.props.socket.emit('subscribe', {
+            roomId: this.props.match.params.id,
+            username: AuthService.getUserDetails().username
+        });
+
+        this.props.socket.on(`refresh-${this.props.match.params.id}`, (data) => {
+            console.log("Refresh playlist", data);
+            this.props.getRoom(this.props.match.params.id, '')
+        });
+
+
     }
+
+    componentWillUnmount() {
+        this.disconnectFromSocket();
+    }
+
+    disconnectFromSocket = () => {
+        this.state.socket.emit('unsubscribe', {
+            roomId: this.props.room.id,
+            username: AuthService.getUserDetails().username
+        })
+    };
 
     toggleSearch = () => {
         this.setState({isSearchOpen: !this.state.isSearchOpen});
@@ -77,8 +104,9 @@ class Room extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        room: state.room
+        room: state.room,
+        socket: state.socket
     });
 };
 
-export default connect(mapStateToProps, {getRoom})(withRouter(Room));
+export default connect(mapStateToProps, {getRoom, getPlaylist})(withRouter(Room));
