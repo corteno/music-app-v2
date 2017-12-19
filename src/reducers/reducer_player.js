@@ -1,4 +1,4 @@
-import {SET_CURRENT_SONG, SET_PLAYER, SET_CURRENT_TIME, TOGGLE_PLAY, TOGGLE_PLAYER_WINDOW, SET_ISPLAYING, DELETE_SONG, ADD_SONG} from '../actions';
+import {REFRESH_PLAYLIST, SET_CURRENT_SONG, SET_PLAYER, SET_CURRENT_TIME, TOGGLE_PLAY, TOGGLE_PLAYER_WINDOW, SET_ISPLAYING, DELETE_SONG, ADD_SONG} from '../actions';
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -39,15 +39,15 @@ export default (state = initialState, action) => {
             };
 
         case DELETE_SONG:
-            if(action.payload.data){
-                if(!action.payload.data.includes(state.currentSong)){
+            if(action.payload.data.playlist){
+                if(!action.payload.data.playlist.includes(state.currentSong)){
+                    console.log('contains current song');
                     return {
                         ...state,
-                        currentSong: action.payload.data[0]
+                        currentSong: action.payload.data.playlist[0]
                     }
                 }
             }
-
             return state;
 
         case ADD_SONG:
@@ -64,6 +64,17 @@ export default (state = initialState, action) => {
                 ...state,
                 isVisible: !action.payload
             };
+
+        case REFRESH_PLAYLIST:
+            if(action.payload.data.playlist){
+                console.log('refresh playlist reducer');
+                if(!action.payload.data.playlist.includes(state.currentSong)){
+                    return {
+                        ...state,
+                        currentSong: action.payload.data.playlist[0]
+                    }
+                }
+            }
 
         default:
             return state;

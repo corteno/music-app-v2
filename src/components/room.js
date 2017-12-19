@@ -10,7 +10,7 @@ import SearchList from './searchList';
 import YoutubePlayer from './youtubePlayer';
 import AuthService from '../utils/AuthService';
 
-import {getRoom, getPlaylist} from '../actions';
+import {getRoom, getPlaylist, refreshPlaylist} from '../actions';
 import './room.css';
 
 
@@ -38,8 +38,12 @@ class Room extends Component {
         });
 
         this.props.socket.on(`refresh-${this.props.match.params.id}`, (data) => {
-            console.log("Refresh playlist", data);
-            this.props.getRoom(this.props.match.params.id, '')
+            if(data.type === 'refreshPlaylist'){
+                this.props.getRoom(this.props.match.params.id, '')
+            } else if(data.type === 'refreshPlaylistDelete'){
+                this.props.refreshPlaylist(this.props.match.params.id)
+            }
+
         });
 
 
@@ -109,4 +113,4 @@ let mapStateToProps = (state) => {
     });
 };
 
-export default connect(mapStateToProps, {getRoom, getPlaylist})(withRouter(Room));
+export default connect(mapStateToProps, {getRoom, getPlaylist, refreshPlaylist})(withRouter(Room));

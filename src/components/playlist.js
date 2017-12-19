@@ -46,7 +46,6 @@ class Playlist extends Component {
 
     
     deletePlaylistItem = (id) => {
-        console.log('end');
         this.props.deleteSong(this.props.room.id, id);
     };
 

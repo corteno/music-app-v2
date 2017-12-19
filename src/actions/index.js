@@ -21,6 +21,8 @@ export const SET_CURRENT_TIME = 'set_current_time';
 export const TOGGLE_PLAY = 'toggle_play';
 export const TOGGLE_PLAYER_WINDOW = 'toggle_player_window';
 export const SET_ISPLAYING = 'is_playing';
+export const REFRESH_PLAYLIST = 'refresh_playlist';
+
 
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const YT_API_URL_VIDEOS = 'https://www.googleapis.com/youtube/v3/videos';
@@ -200,4 +202,13 @@ export const setIsPlaying = (isPlaying) => {
         type: SET_ISPLAYING,
         payload: isPlaying
     }
+};
+
+export const refreshPlaylist = (roomId) => {
+    const request = axios.get(`${ROOT_API_URL}/playlist/${roomId}`);
+    return {
+        type: REFRESH_PLAYLIST,
+        payload: request
+    }
+
 };

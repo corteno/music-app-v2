@@ -1,4 +1,4 @@
-import {GET_ROOM, DELETE_SONG, ADD_SONG, GET_PLAYLIST} from '../actions';
+import {GET_ROOM, DELETE_SONG, ADD_SONG, GET_PLAYLIST, REFRESH_PLAYLIST} from '../actions';
 
 export default (state = {}, action) => {
     switch (action.type) {
@@ -14,10 +14,16 @@ export default (state = {}, action) => {
                 playlist: action.payload.data.playlist
             };
 
+        case REFRESH_PLAYLIST:
+            return {
+                ...state,
+                playlist: action.payload.data.playlist
+            };
+
         case DELETE_SONG:
             return {
                 ...state,
-                playlist: action.payload.data
+                playlist: action.payload.data.playlist
             };
 
         default:
