@@ -54,7 +54,7 @@ class Room extends Component {
     }
 
     disconnectFromSocket = () => {
-        this.state.socket.emit('unsubscribe', {
+        this.props.socket.emit('unsubscribe', {
             roomId: this.props.room.id,
             username: AuthService.getUserDetails().username
         })

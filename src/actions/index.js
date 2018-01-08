@@ -22,6 +22,9 @@ export const TOGGLE_PLAY = 'toggle_play';
 export const TOGGLE_PLAYER_WINDOW = 'toggle_player_window';
 export const SET_ISPLAYING = 'is_playing';
 export const REFRESH_PLAYLIST = 'refresh_playlist';
+export const REGISTER_USER = 'register_user';
+export const RESET_LOGIN_MESSAGE = 'reset_login_message';
+export const SWITCH_LOGIN_FORM = 'switch_login_form';
 
 
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -211,4 +214,33 @@ export const refreshPlaylist = (roomId) => {
         payload: request
     }
 
+};
+
+export const registerUser = (user) => {
+    console.log(user);
+    const request = axios.post(`${ROOT_API_URL}/user/`, {
+        email: user.email,
+        username: user.username,
+        password: user.password
+    });
+
+    return {
+        type: REGISTER_USER,
+        payload: request
+    }
+
+};
+
+export const resetLoginMessage = () => {
+    return {
+        type: RESET_LOGIN_MESSAGE,
+        payload: ''
+    }
+};
+
+export const switchLoginForm = (isLogin) => {
+    return {
+        type: SWITCH_LOGIN_FORM,
+        payload: isLogin
+    }
 };

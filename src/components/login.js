@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import FormInput from './formInput';
+import {connect} from 'react-redux';
 
 import AuthService from '../utils/AuthService';
+import {registerUser, switchLoginForm} from "../actions";
 import './login.css';
 
 class Login extends Component {
@@ -33,7 +35,7 @@ class Login extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        AuthService.login({username: this.state.user.username,password: this.state.user.password})
+        AuthService.login({username: this.state.user.username, password: this.state.user.password})
             .then(() => {
                 console.log('yep');
             })
@@ -68,20 +70,32 @@ class Login extends Component {
     };
 
     onRegisterClick = () => {
-        this.setState({isLogin: !this.state.isLogin}, () => {
+        this.props.switchLoginForm(this.props.login.isLogin);
+        this.resetForm();
+        /*this.setState({isLogin: !this.state.isLogin}, () => {
             this.resetForm();
-        });
+        });*/
 
     };
 
-    render() {
+    onRegister = (e) => {
+        e.preventDefault();
+        this.props.registerUser({
+            username: this.state.user.username,
+            password: this.state.user.password,
+            email: this.state.user.email
+        });
+        //this.resetForm();
+    };
 
+    render() {
         return (
             <div className="login-wrapper">
-                <form className="login-form col" onSubmit={this.onSubmit}>
-                    <h1 className='form-title'>{this.state.isLogin ? 'Login' : 'Register'}</h1>
+                <form className="login-form col"
+                      onSubmit={this.props.login.isLogin ? this.onSubmit : (e) => this.onRegister(e)}>
+                    <h1 className='form-title'>{this.props.login.isLogin ? 'Login' : 'Register'}</h1>
 
-                    {this.state.isLogin ? ''
+                    {this.props.login.isLogin ? ''
                         : <FormInput
                             type="email"
                             name="email"
@@ -113,19 +127,19 @@ class Login extends Component {
                         required={true}
                     />
                     <p className="form-message">
-                        {this.state.message}
+                        {this.props.login.message}
                     </p>
 
                     <input
                         type="submit"
-                        value={this.state.isLogin ? 'Login' : 'Register'}
+                        value={this.props.login.isLogin ? 'Login' : 'Register'}
                         className="form-submit"
                     />
 
                     <p
                         className="login-register"
                         onClick={this.onRegisterClick}>
-                        {this.state.isLogin ? 'Click here to register' : 'Click here to login'}
+                        {this.props.login.isLogin ? 'Click here to register' : 'Click here to login'}
                     </p>
 
                 </form>
@@ -135,4 +149,10 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        login: state.login
+    }
+};
+
+export default connect(mapStateToProps, {registerUser, switchLoginForm})(Login);

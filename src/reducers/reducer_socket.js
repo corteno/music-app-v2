@@ -21,4 +21,4 @@ export default (state = initialState, action) => {
     }
 };
 
-const initialState = io.connect(RootApiUrl);
+const initialState = io.connect(`${RootApiUrl}`);

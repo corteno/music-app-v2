@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import AuthService from '../utils/AuthService';
 
 import Modal from './modal';
 import Menu from './menu';
@@ -79,10 +80,19 @@ class Header extends Component {
                         </div>
 
                         <ul className="menu-list col">
-                            <li className="menu-list-item"><Link
-                                to="/"
-                                className="menu-list-item-link"
-                            >Rooms</Link></li>
+                            <li className="menu-list-item">
+                                <Link
+                                    to="/"
+                                    className="menu-list-item-link"
+                                >Rooms</Link>
+                            </li>
+                            <li className="menu-list-item">
+                                <Link
+                                    to=""
+                                    className="menu-list-item-link"
+                                    onClick={() => AuthService.logout()}
+                                >Logout</Link>
+                            </li>
                         </ul>
                     </Menu>
                     : ''
@@ -95,9 +105,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return({
-      room: state.room
-  })
+    return ({
+        room: state.room
+    })
 };
 
 export default connect(mapStateToProps)(withRouter(Header));
