@@ -40,7 +40,7 @@ class Login extends Component {
                 console.log('yep');
             })
             .catch(() => {
-                this.setState({message: 'Invalid credentials'});
+                this.setState({message: 'Wrong username or password.'});
             })
 
     };
@@ -127,7 +127,7 @@ class Login extends Component {
                         required={true}
                     />
                     <p className="form-message">
-                        {this.props.login.message}
+                        {this.state.message}
                     </p>
 
                     <input

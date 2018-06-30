@@ -17,7 +17,6 @@
 }
 
 .search-list-content-name{
-    color: #BDBDBD;
     font-size: 14px;
     overflow: hidden;
     color: #EEEEEE;
@@ -34,6 +33,8 @@
     align-items: center;
     font-size: 38px;
     margin-left: auto;
+
+    cursor: pointer;
 }
 
 

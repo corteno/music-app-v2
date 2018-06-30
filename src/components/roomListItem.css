@@ -2,6 +2,8 @@
     width: 100%;
     padding: 10px;
     border-bottom: 1px solid #616161;
+    cursor: pointer;
+    transition: 0.2s background-color;
 }
 
 .room-list-item p{
@@ -16,4 +18,8 @@
 .room-owner{
     font-family: OpensansLight;
     font-size: 14px;
+}
+
+.room-list-item:hover{
+    background: #424242;
 }

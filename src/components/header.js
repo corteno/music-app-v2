@@ -56,7 +56,7 @@ class Header extends Component {
         return (
             <header className='header-wrapper'>
                 <div className="hamburger" onClick={this.toggleMenu}>&#9776;</div>
-                {this.props.location.pathname === "/"
+                {this.props.location.pathname === "/" //If it's the root path (rooms)
                     ? <div className="create-room" onClick={this.createRoom}>+</div>
                     : ''
                 }
@@ -74,10 +74,17 @@ class Header extends Component {
                         closeMenu={this.closeMenu}
                         className={this.state.isMenuClosing ? 'menu-closing' : ''}
                     >
-                        <div className="menu-header col">
-                            <h2 className="menu-room-name">{this.props.room.name}</h2>
-                            <h3 className="menu-room-owner">{this.props.room.owner}</h3>
-                        </div>
+
+                        {this.props.location.pathname === "/" //If it's the root path aka rooms
+                            ? <div className="menu-header col">
+                                <h2 className="menu-room-name">{AuthService.getUserDetails().username}</h2>
+                            </div>
+                            : <div className="menu-header col">
+                                <h2 className="menu-room-name">{this.props.room.name}</h2>
+                                <h3 className="menu-room-owner">{this.props.room.owner}</h3>
+                            </div>
+                        }
+
 
                         <ul className="menu-list col">
                             <li className="menu-list-item">

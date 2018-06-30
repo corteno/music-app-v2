@@ -43,13 +43,20 @@ class Modal extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
         this.props.createRoom({
             name: this.state.roomname,
             password: this.state.password,
             owner: AuthService.getUserDetails().username,
             isPublic: !this.state.isPrivate
-        });
-        this.props.close();
+        }).then(() => {
+            this.props.close();
+        }).catch((e) => {
+            console.log('test');
+            this.setState({message: e.message})
+        })
+
+
     };
 
     render() {
@@ -88,6 +95,7 @@ class Modal extends Component {
                         labelName='Private'
                         required={false}
                     />
+                    <p className="modal-message">{this.state.message}</p>
 
                     <FormInput
                         type="submit"
@@ -103,10 +111,23 @@ class Modal extends Component {
     }
 }
 
+
 let mapDispatchToProps = (dispatch) => {
     return ({
-        createRoom: (room) => {dispatch(createRoom(room))}
-    });
+        createRoom: (room) => {
+            return new Promise((resolve, reject) => {
+                    dispatch(createRoom(room))
+                        .then(() => {
+                            resolve({success: true});
+                        })
+                        .catch((e) => {
+                            reject({success: false, message: e.message});
+                        })
+                }
+            )
+
+        }
+    })
 };
 
 let mapStateToProps = (state) => {

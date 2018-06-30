@@ -72,10 +72,17 @@ export const createRoom = (room) => {
         isPublic: room.isPublic
     });
 
-    return {
-        type: CREATE_ROOM,
-        payload: request
-    }
+    return new Promise((resolve, reject) => {
+        request.then(() => {
+           resolve({
+               type: CREATE_ROOM,
+               payload: request
+           })
+        }).catch(() => {
+            reject({message:'You already have a room.'});
+        })
+
+    })
 };
 
 export const search = (params) => {

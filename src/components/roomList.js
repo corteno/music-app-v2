@@ -24,7 +24,7 @@ class RoomList extends Component {
     };
 
     renderRooms = () => {
-        return _.map(this.props.rooms, room => {
+        return _.map(this.props.rooms.rooms, room => {
             return(
                 <RoomListItem
                     key={room.id}

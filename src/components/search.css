@@ -9,6 +9,7 @@
 .search-icon{
     width: 30px;
     margin-top: 4px;
+    cursor: pointer;
 }
 
 .search-input{

@@ -13,11 +13,13 @@
 .music-controls{
     height: 100%;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .primary-control{
     width: 40px;
     margin: 0 20px;
+
 }
 
 .secondary-control{

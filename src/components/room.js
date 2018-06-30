@@ -100,12 +100,6 @@ class Room extends Component {
     }
 }
 
-/*let mapDispatchToProps = (dispatch) => {
-  return ({
-      getRoom: (id) => {dispatch(getRoom(id))}
-  });
-};*/
-
 let mapStateToProps = (state) => {
     return ({
         room: state.room,

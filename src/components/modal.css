@@ -112,7 +112,7 @@ input[type="checkbox"]:checked ~ .bar{
     padding: 0 20px;
 }
 
-.modal-submit{
+.modal-submit {
     height: 50px;
     border: none;
     padding: 0;
@@ -122,4 +122,12 @@ input[type="checkbox"]:checked ~ .bar{
     background: #512DA8;
     justify-content: center;
     border-radius: 40px;
+}
+
+.modal-message{
+    font-family: OpensansMedium;
+    min-height: 24px;
+    line-height: 24px;
+    margin-top: 10px;
+    color: #EF5350;
 }

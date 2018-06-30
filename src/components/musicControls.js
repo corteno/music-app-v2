@@ -105,7 +105,9 @@ class MusicControls extends Component {
                     </div>
                     <div className="music-seeker-time-wrapper">
                         <p className="music-current-time music-duration-text">{this.props.player.currentTime}</p>
-                        <p className="music-end-time music-duration-text">{this.getCurrentSongDuration()}</p>
+                        <p className="music-end-time music-duration-text">
+                            {this.getCurrentSongDuration() === undefined ? '0:00' : this.getCurrentSongDuration()}
+                        </p>
                     </div>
 
 

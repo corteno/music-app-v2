@@ -2,4 +2,6 @@
     overflow-x: scroll;
     z-index: 7;
     padding-bottom: 20px;
+    max-width: 700px;
+    width: 100%;
 }
