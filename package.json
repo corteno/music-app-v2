@@ -2,7 +2,7 @@
   "name": "music-app-v2",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://play.borsodidavid.com",
+  "homepage": "https://play.borsodidavid.com",
   "dependencies": {
     "axios": "^0.16.2",
     "jsonwebtoken": "^8.0.1",

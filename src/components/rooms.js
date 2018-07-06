@@ -6,6 +6,10 @@ import RoomList from './roomList';
 import './rooms.css';
 
 class Rooms extends Component {
+
+    componentWillMount(){
+        document.title = 'Rooms - MA'
+    }
     
     render() {
         return (

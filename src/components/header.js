@@ -3,6 +3,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import AuthService from '../utils/AuthService';
+import Classname from '../utils/Classname';
 
 import Modal from './modal';
 import Menu from './menu';
@@ -11,12 +12,12 @@ import './header.css';
 class Header extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             isMenuOpen: false,
             isCreatingRoom: false,
             isClosing: false,
-            isMenuClosing: false
+            isMenuClosing: false,
+            menuClassNames: ''
         }
     }
 
@@ -24,11 +25,10 @@ class Header extends Component {
     }
 
     toggleMenu = () => {
-        console.log('toggle');
         if (this.state.isMenuOpen) {
-            this.setState({isMenuOpen: false})
+            this.setState({isMenuOpen: false, menuClassNames: ''})
         } else {
-            this.setState({isMenuOpen: true})
+            this.setState({isMenuOpen: true, menuClassNames: 'menu-open'})
         }
     };
 
@@ -45,6 +45,7 @@ class Header extends Component {
     };
 
     closeMenu = () => {
+        console.log(this.state.isMenuClosing);
         this.setState({isMenuClosing: true}, () => {
             setTimeout(() => {
                 this.setState({isMenuClosing: false, isMenuOpen: false});
@@ -68,7 +69,7 @@ class Header extends Component {
                     : ''
                 }
 
-                {this.state.isMenuOpen
+                {/*{this.state.isMenuOpen
                     ? <Menu
                         toggleMenu={this.toggleMenu}
                         closeMenu={this.closeMenu}
@@ -103,7 +104,43 @@ class Header extends Component {
                         </ul>
                     </Menu>
                     : ''
-                }
+                }*/}
+
+                <Menu
+                    toggleMenu={this.toggleMenu}
+                    closeMenu={this.closeMenu}
+                    className={Classname({
+                        'menu-open': this.state.isMenuOpen,
+                        'menu-closing': this.state.isMenuClosing
+                    })}
+                >
+                    {this.props.location.pathname === "/" //If it's the root path aka rooms
+                        ? <div className="menu-header col">
+                            <h2 className="menu-room-name">{AuthService.getUserDetails().username}</h2>
+                        </div>
+                        : <div className="menu-header col">
+                            <h2 className="menu-room-name">{this.props.room.name}</h2>
+                            <h3 className="menu-room-owner">{this.props.room.owner}</h3>
+                        </div>
+                    }
+
+
+                    <ul className="menu-list col">
+                        <li className="menu-list-item">
+                            <Link
+                                to="/"
+                                className="menu-list-item-link"
+                            >Rooms</Link>
+                        </li>
+                        <li className="menu-list-item">
+                            <Link
+                                to=""
+                                className="menu-list-item-link"
+                                onClick={() => AuthService.logout()}
+                            >Logout</Link>
+                        </li>
+                    </ul>
+                </Menu>
 
                 {this.props.children /* To render children written between the <Header></Header> tags*/}
             </header>
